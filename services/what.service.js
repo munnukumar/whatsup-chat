@@ -21,7 +21,7 @@ class whatService {
             // console.log( "CLIENT_ID: ", ENV.CLIENT_ID);
             // console.log( "TP_BASE_URL: ", ENV.TP_BASE_URL);
             const response = await this.twinProtocol.userWithMemory();
-            console.log("The response received is: ", response, 20);
+            console.log("The response received is: ", response);
             return response;
         } catch (error) {
             console.error("Error in whatService:", error);  
