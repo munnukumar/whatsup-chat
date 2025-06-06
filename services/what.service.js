@@ -11,20 +11,15 @@ class whatService {
             TP_BASE_URL: ENV.TP_BASE_URL,
             TP_WS_URL: ENV.TP_WS_URL
         });
-    }    
+    }
 
     async what() {
         try {
-            // console.log("whatService is being hit");
-            // console.log( "ACCESS_KEY: ", ENV.ACCESS_KEY);
-            // console.log( "SECRET_KEY: ", ENV.SECRET_KEY);
-            // console.log( "CLIENT_ID: ", ENV.CLIENT_ID);
-            // console.log( "TP_BASE_URL: ", ENV.TP_BASE_URL);
             const response = await this.twinProtocol.userWithMemory();
-            console.log("The response received is: ", response);
+            // console.log("The response received is: ", response, 20);
             return response;
         } catch (error) {
-            console.error("Error in whatService:", error);  
+            console.error("Error in whatService:", error);
             return {
                 data: null,
                 message: "Unable to fetch data"
@@ -35,7 +30,7 @@ class whatService {
     async createPersonality(formData) {
         try {
             const response = await this.twinProtocol.createPersonality(formData);
-            console.log("Personality creation response:", response);
+            // console.log("Personality creation response:", response);
             return response;
         } catch (error) {
             console.error("Error in createPersonality:", error);
@@ -46,6 +41,31 @@ class whatService {
         }
     }
 
+     async createChat (sessionId, message, userId, personalityId, wordLimit, modelName, language) {
+        return await this.twinProtocol.createChat(
+            sessionId,
+            message,
+            userId,
+            personalityId,
+            wordLimit,
+            modelName,
+            language
+        );
+    };
+
+    async createSession(userId, personalityId) {
+        try {
+            const response = await this.twinProtocol.createSession(userId, personalityId);
+            // console.log("Session creation response:", response);
+            return response;
+        } catch (error) {
+            console.error("Error in createSession:", error);
+            return {
+                data: null,
+                message: "Unable to create session"
+            }
+        }
+    }
 }
 
 export default new whatService();
