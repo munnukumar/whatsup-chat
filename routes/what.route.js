@@ -5,7 +5,7 @@ import multer from 'multer';
 const router = express.Router();
 const upload = multer();
 
-router.g('/user', getWhat);
+router.post('/user', getWhat);
 router.post('/create-personality', upload.single('avatar'), createPersonality);
 
 export default router;
