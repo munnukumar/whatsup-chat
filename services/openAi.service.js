@@ -9,7 +9,7 @@ const openai = new OpenAI({
 
 export const getAIResponse = async (userMessage) => {
   const chatCompletion = await openai.chat.completions.create({
-    model: "gpt-3.5-turbo", // or "gpt-4" if your plan supports it
+    model: "gpt-3.5-turbo",
     messages: [
       {
         role: "system",

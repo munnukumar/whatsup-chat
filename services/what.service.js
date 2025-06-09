@@ -42,6 +42,7 @@ class whatService {
     }
 
      async createChat (sessionId, message, userId, personalityId, wordLimit, modelName, language) {
+        console.log("message : ", message)
         return await this.twinProtocol.createChat(
             sessionId,
             message,
