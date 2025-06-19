@@ -4,11 +4,8 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import ngrok from "@ngrok/ngrok";
 
-
 import whatRoute from "./routes/what.route.js";
 import twilioRoute from "./routes/twilio.route.js";
-
-
 
 dotenv.config();
 const app = express();
@@ -19,15 +16,17 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use("/api", whatRoute);
 app.use("/twilio", twilioRoute);
+// app.use("//api/sms", smsRoutes);
 
 
-const PORT = process.env.PORT || 5000;
+
+const PORT = process.env.PORT || 8000;
 app.listen(PORT, async() => {
   console.log(` Server running at http://localhost:${PORT}`);
 
 
-   // Start Ngrok tunnel
-   try {
+  // Start Ngrok tunnel
+  try {
     console.log("🌐 Starting ngrok tunnel...");
 
     const tunnel = await ngrok.connect({
@@ -40,8 +39,9 @@ app.listen(PORT, async() => {
 
     console.log(`🚀 Public URL (ngrok): ${tunnel.url()}`);
     console.log(`📨 Set this as your Twilio webhook: ${tunnel.url()}/twilio/webhook`);
-  } catch (ngrokError) {
-    console.error("❌ Error starting ngrok tunnel:", ngrokError.message);
+  } catch (err) {
+    console.error("❌ Error starting ngrok tunnel:", err.message);
     process.exit(1);
   }
 });
+

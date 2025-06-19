@@ -5,23 +5,28 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "dev": "nodemon index.js"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
     "@ngrok/ngrok": "^1.5.1",
+    "@vonage/server-sdk": "^3.20.1",
     "axios": "^1.9.0",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
-    "form-data": "^4.0.2",
+    "form-data": "^4.0.3",
+    "formdata-node": "^6.0.3",
+    "franc": "^6.2.0",
     "multer": "^2.0.1",
     "nodemon": "^3.1.10",
     "openai": "^5.1.1",
+    "transliteration": "^2.3.5",
     "twilio": "^5.7.0",
-    "twin-protocol-dev": "^2.0.0"
+    "twin-protocol-dev": "^2.0.0",
+    "undici": "^6.21.3"
   }
 }
